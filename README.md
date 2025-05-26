@@ -11,6 +11,7 @@ Dolometis is a phishing executable written in Powershell (targets windows hosts)
 - Running Processes & Services,
 - System Event Logs and
 - Hardware Info.
+
 It then sends all that to an email address that the user provides.
 
 
