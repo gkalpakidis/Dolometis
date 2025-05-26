@@ -1,0 +1,1 @@
+Invoke-PS2EXE -InputFile "C:\Downloads\Dolometis\windows\launcher.ps1" -OutputFile "C:\Downloads\Dolometis\dolometis.exe" -NoConsole -NoOutput
