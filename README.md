@@ -2,6 +2,7 @@
 # Dolometis
 
 **[UNDER DEVELOPMENT]**
+
 Dolometis is a phishing executable written in Powershell (targets windows hosts) and when executed, it (currently) collects useful system information like:
 - IP Addresses,
 - Network Adapters,
