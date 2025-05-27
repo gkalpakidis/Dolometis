@@ -107,3 +107,24 @@ if __name__ == "__main__":
     recipient_email = ""
 
     send_outlook(sender_email, sender_pass, recipient_email)
+
+#Send mail using MailerSender
+def send_mailersend(sender_email, sender_pass, recipient_email):
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = "System Information Report (Linux)"
+    msg["From"] = sender_email
+    msg["To"] = recipient_email
+
+    html_body = email_body()
+    part = MIMEText(html_body, "html")
+    msg.attach(part)
+
+    try:
+        server = smtplib.SMTP("smtp.mailersend.net", 587)
+        server.starttls()
+        server.login(sender_email, sender_pass)
+        server.sendmail(sender_email, recipient_email, msg.as_string())
+        server.quit()
+        print("Email sent successfully.")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
