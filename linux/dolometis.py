@@ -80,35 +80,7 @@ def email_body():
     html += "</body></html>"
     return html
 
-#Send mail using Outlook SMTP
-def send_outlook(sender_email, sender_pass, recipient_email):
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = "System Information Report (Linux)"
-    msg["From"] = sender_email
-    msg["To"] = recipient_email
-
-    html_body = email_body()
-    part = MIMEText(html_body, "html")
-    msg.attach(part)
-
-    try:
-        server = smtplib.SMTP("smtp.office365.com", 587)
-        server.starttls()
-        server.login(sender_email, sender_pass)
-        server.sendmail(sender_email, recipient_email, msg.as_string())
-        server.quit()
-        print("Email sent successfully.")
-    except Exception as e:
-        print(f"Failed to send email: {e}")
-
-if __name__ == "__main__":
-    sender_email = ""
-    sender_pass = ""
-    recipient_email = ""
-
-    send_outlook(sender_email, sender_pass, recipient_email)
-
-#Send mail using MailerSender
+#Send mail using MailerSend
 def send_mailersend(sender_email, sender_pass, recipient_email):
     msg = MIMEMultipart("alternative")
     msg["Subject"] = "System Information Report (Linux)"
@@ -128,3 +100,10 @@ def send_mailersend(sender_email, sender_pass, recipient_email):
         print("Email sent successfully.")
     except Exception as e:
         print(f"Failed to send email: {e}")
+
+if __name__ == "__main__":
+    sender_email = ""
+    sender_pass = ""
+    recipient_email = ""
+
+    send_mailersend(sender_email, sender_pass, recipient_email)
