@@ -27,19 +27,25 @@ Before you clone the repository and start the configuration you have to install 
   Install-Module -Name ps2exe -Scope CurrentUser
 ```
 You are likely to be prompted to choose some things.
+
 Install and import NuGet: Y (Yes)
+
 Untrusted repository. Install modules from PSGallery: Y (Yes)
+
 Installation should finish successfully.
 
 Additionally if you have not tinkered with Powershell, you will not be able to execute the scripts and you will have to change the execution policy.
+
 Open Powershell as Administrator and execute:
 ```ps
   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 Once again, you will be prompted.
+
 Change execution policy: Y (Yes)
 
 After doing all this, you are ready to configure the scripts.
+
 Step 1:
 Open encrypt.ps1 and enter your raw email and password. Execute the script to encrypt the raw credentials and generate the necessary keys (Key & IV).
 
