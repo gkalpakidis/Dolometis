@@ -20,7 +20,7 @@ It then sends all that to an email address that the user provides.
 
 ## How to use
 
-**Windows**
+- **Windows**
 
 Before you clone the repository and start the configuration you have to install ***ps2exe***.
 ```ps
@@ -61,7 +61,7 @@ Open launcher.ps1 script and insert the Base64 string from the encoded_script.tx
 **Step 5:**
 Open convertor.ps1 script to enter the paths of the launcher.ps1 script and the phishing executable. Execute the script to get the executable.
 
-**Linux**
+- **Linux**
 
 Dolometis for linux systems is currently just a script which does not get converted to an executable.
 
