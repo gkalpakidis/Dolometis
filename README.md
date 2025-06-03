@@ -46,21 +46,31 @@ Change execution policy: Y (Yes)
 
 After doing all this, you are ready to configure the scripts.
 
-Step 1:
+**Step 1:**
 Open encrypt.ps1 and enter your raw email and password. Execute the script to encrypt the raw credentials and generate the necessary keys (Key & IV).
 
-Step 2:
+**Step 2:**
 Open the main dolometis.ps1 script, change the default values (SMTP Server, Port, Recipient Email Address, etc) and insert the encrypted credentials along with the generated (Base64) Key and IV values to the correct variables. Save the script.
 
-Step 3:
+**Step 3:**
 Open encode-script.ps1. Enter the path of the main dolometis.ps1 script and the path for the encoded script. Execute the script to get the Base64 encrypted script (encoded_script.txt).
 
-Step 4:
+**Step 4:**
 Open launcher.ps1 script and insert the Base64 string from the encoded_script.txt file.
 
-Step 5:
+**Step 5:**
 Open convertor.ps1 script to enter the paths of the launcher.ps1 script and the phishing executable. Execute the script to get the executable.
 
+**Linux**
+
+Dolometis for linux systems is currently just a script which does not get converted to an executable.
+
+It uses a single email sending service ***(MailerSend)*** but I am planning on adding more options in the future.
+
+**Step 1:**
+Since the script uses MailerSend to send the email, you will have to create an account and get your SMTP credentials. More specifically you will need the Server, Port, Username and Password and you have to pass these to the script.
+
+When ready just execute the script.
 
 ## Authors
 
